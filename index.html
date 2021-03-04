@@ -19,6 +19,41 @@ function Child() {
     return 0
   })
 
+  React.useLayoutEffect(() => {
+    console.log('%c    Child: useLayoutEffect(() => {})', 'color: Olive')
+    return () => {
+      console.log(
+        '%c    Child: useLayoutEffect(() => {}) cleanup 🧹',
+        'color: Olive',
+      )
+    }
+  })
+
+
+  React.useLayoutEffect(() => {
+    console.log(
+      '%c    Child: useLayoutEffect(() => {}, [])',
+      'color: LightGray',
+    )
+    return () => {
+      console.log(
+        '%c    Child: useLayoutEffect(() => {}, []) cleanup 🧹',
+        'color: LightGray',
+      )
+    }
+  }, [])
+
+  React.useLayoutEffect(() => {
+    console.log('%c    Child: useLayoutEffect(() => {}, [count])', 'color: DodgerBlue')
+    return () => {
+      console.log(
+        '%c    Child: useLayoutEffect(() => {}, [count]) cleanup 🧹',
+        'color: DodgerBlue',
+      )
+    }
+  }, [count])
+
+
   React.useEffect(() => {
     console.log('%c    Child: useEffect(() => {})', 'color: LightCoral')
     return () => {
@@ -70,6 +105,33 @@ function App() {
     console.log('%cApp: useState(() => false)', 'color: tomato')
     return false
   })
+
+  React.useLayoutEffect(() => {
+    console.log('%cApp: useLayoutEffect(() => {})', 'color: Teal')
+    return () => {
+      console.log('%cApp: useLayoutEffect(() => {}) cleanup 🧹', 'color: Teal')
+    }
+  })
+
+  React.useLayoutEffect(() => {
+    console.log('%cApp: useLayoutEffect(() => {}, [])', 'color: Yellow')
+    return () => {
+      console.log(
+        '%cApp: useLayoutEffect(() => {}, []) cleanup 🧹',
+        'color: Yellow',
+      )
+    }
+  }, [])
+
+  React.useLayoutEffect(() => {
+    console.log('%cApp: useLayoutEffect(() => {}, [showChild])', 'color: DarkViolet')
+    return () => {
+      console.log(
+        '%cApp: useLayoutEffect(() => {}, [showChild]) cleanup 🧹',
+        'color: DarkViolet',
+      )
+    }
+  }, [showChild])
 
   React.useEffect(() => {
     console.log('%cApp: useEffect(() => {})', 'color: LightCoral')
